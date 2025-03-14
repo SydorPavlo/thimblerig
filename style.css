@@ -2,7 +2,7 @@ html {
   height: 100vh;
   overflow: hidden;
   background: #444;
-} 
+}
 
 .table {
   border-bottom: 40vmin solid brown;
@@ -11,7 +11,7 @@ html {
   position: absolute;
   top: 50%;
   left: 50%;
-  translate:-50% -50%;
+  translate: -50% -50%;
   width: 80vmin;
   display: flex;
   justify-content: center;
@@ -28,7 +28,6 @@ html {
     translate: -50% 0;
   }
 
-
   &::after {
     content: '';
     width: 100vmin;
@@ -42,9 +41,11 @@ html {
 
 .thimble {
   --size: 18vmin;
+  --raise: 0;
   border-bottom: var(--size) solid orange;
   border-inline: calc(var(--size) * 0.24) solid transparent;
   width: calc(var(--size) * 0.6);
+  transition: transform 1s;
   position: relative;
   flex-shrink: 0;
   filter: drop-shadow(0 0 10px #3339);
@@ -61,6 +62,10 @@ html {
     translate: 0 -50%;
   }
 
+  &.selected::before {
+    box-shadow: inset 0 0 5px 5px lime;
+  }
+
   &::after {
     content: '';
     width: calc(var(--size) * 1.08);
@@ -73,12 +78,46 @@ html {
     translate: 0 50%;
   }
 
-  --raise: 0;
-  transition: 1s;
-
-  &:has(.ball) {
+  &.open {
+    /* &:has(.ball) { */
     --raise: calc(var(--size) * -1);
     transform: translateY(var(--raise));
+  }
+
+  &.ru {
+    animation: right-up 5s;
+  }
+
+  &.rd {
+    animation: right-down 5s;
+    z-index: 1;
+  }
+
+  &.lu {
+    animation: left-up 5s;
+    z-index: -1;
+  }
+
+  &.ld {
+    animation: left-down 5s;
+  }
+
+  &.ru2 {
+    animation: right-up2 5s;
+  }
+
+  &.rd2 {
+    animation: right-down2 5s;
+    z-index: 1;
+  }
+
+  &.lu2 {
+    animation: left-up2 5s;
+    z-index: -1;
+  }
+
+  &.ld2 {
+    animation: left-down2 5s;
   }
 }
 
@@ -91,6 +130,94 @@ html {
   top: var(--size);
   position: absolute;
   translate: -50% -50%;
-  transition: 1s;
-  transform:translateY(calc(var(--raise) * -1))
+  transition: transform 1s;
+  transform: translateY(calc(var(--raise) * -1))
+}
+
+@keyframes right-up {
+  50% {
+    translate: calc(50% + 3vmin) -50%;
+    scale: 0.92;
+  }
+
+  100% {
+    translate: calc(100% + 6vmin) 0;
+  }
+}
+
+@keyframes right-down {
+  50% {
+    translate: calc(50% + 3vmin) 50%;
+    scale: 1.08;
+  }
+
+  100% {
+    translate: calc(100% + 6vmin) 0;
+  }
+}
+
+@keyframes left-up {
+  50% {
+    translate: calc(-50% - 3vmin) -50%;
+    scale: 0.92;
+  }
+
+  100% {
+    translate: calc(-100% - 6vmin) 0;
+  }
+}
+
+@keyframes left-down {
+  50% {
+    translate: calc(-50% - 3vmin) 50%;
+    scale: 1.08;
+  }
+
+  100% {
+    translate: calc(-100% - 6vmin) 0;
+  }
+}
+
+@keyframes right-up2 {
+  50% {
+    translate: calc(100% + 6vmin) -70%;
+    scale: 0.89;
+  }
+
+  100% {
+    translate: calc(200% + 12vmin) 0;
+  }
+}
+
+@keyframes right-down2 {
+  50% {
+    translate: calc(100% + 6vmin) 70%;
+    scale: 1.11;
+  }
+
+  100% {
+    translate: calc(200% + 12vmin) 0;
+  }
+}
+
+@keyframes left-up2 {
+  50% {
+    translate: calc(-100% - 6vmin) -70%;
+    scale: 0.89;
+  }
+
+  100% {
+    translate: calc(-200% - 12vmin) 0;
+  }
+}
+
+@keyframes left-down2 {
+  50% {
+    translate: calc(-100% - 6vmin) 70%;
+    scale: 1.11;
+  }
+
+  100% {
+    translate: calc(-200% - 12vmin) 0;
+  }
 }
