@@ -42,6 +42,7 @@ html {
 .thimble {
   --size: 18vmin;
   --raise: 0;
+  --duration: 1s;
   border-bottom: var(--size) solid orange;
   border-inline: calc(var(--size) * 0.24) solid transparent;
   width: calc(var(--size) * 0.6);
@@ -85,39 +86,39 @@ html {
   }
 
   &.ru {
-    animation: right-up 5s;
+    animation: right-up var(--duration);
   }
 
   &.rd {
-    animation: right-down 5s;
+    animation: right-down var(--duration);
     z-index: 1;
   }
 
   &.lu {
-    animation: left-up 5s;
+    animation: left-up var(--duration);
     z-index: -1;
   }
 
   &.ld {
-    animation: left-down 5s;
+    animation: left-down var(--duration);
   }
 
   &.ru2 {
-    animation: right-up2 5s;
+    animation: right-up2 var(--duration);
   }
 
   &.rd2 {
-    animation: right-down2 5s;
+    animation: right-down2 var(--duration);
     z-index: 1;
   }
 
   &.lu2 {
-    animation: left-up2 5s;
+    animation: left-up2 var(--duration);
     z-index: -1;
   }
 
   &.ld2 {
-    animation: left-down2 5s;
+    animation: left-down2 var(--duration);
   }
 }
 
